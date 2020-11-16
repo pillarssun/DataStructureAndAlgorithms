@@ -15,5 +15,15 @@ namespace DataStructureAndAlgorithms
             }
             Console.WriteLine();
         }
+
+        public static void printStringArray(string[] arr)
+        {
+            if (arr == null || arr.Length == 0) return;
+            foreach (string i in arr)
+            {
+                Console.Write(i + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }

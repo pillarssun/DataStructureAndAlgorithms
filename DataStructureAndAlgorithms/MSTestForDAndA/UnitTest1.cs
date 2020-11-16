@@ -11,6 +11,18 @@ namespace MSTestForDAndA
         private int[] sortedArr = { 5, 9, 11, 32, 88, 202, 4222 };
 
         [TestMethod]
+        public void TestArrayQueue()
+        {
+            ArrayQueue aq = new ArrayQueue(3);
+            Assert.IsTrue(aq.enqueue("aaa"));
+            Assert.IsTrue(aq.enqueue("bbb"));
+            Assert.IsTrue(aq.enqueue("ccc"));
+            Assert.IsFalse(aq.enqueue("ddd"));
+            Assert.AreEqual(aq.dequeue(), "aaa");
+            Utils.printStringArray(aq.getItems());
+        }
+
+        [TestMethod]
         [DataRow(7, DisplayName = "7 number")]
         public void TestRecursion(int n)
         {
