@@ -7,6 +7,87 @@ namespace DataStructureAndAlgorithms
         {
         }
 
+        //Bubble Sorting
+        public static void bubbleSort(int[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+            {
+                return;
+            }
+            int size = arr.Length;
+            for (int i = 0; i < size; i++)
+            {
+                bool hasInterchange = false;
+                for (int j = 0; j < size - i - 1; j++) // each round will make the very right section to be sorted
+                {
+                    if (arr[j + 1] < arr[j])
+                    {
+                        int temp = arr[j + 1];
+                        arr[j + 1] = arr[j];
+                        arr[j] = temp;
+                        hasInterchange = true;
+                    }
+                }
+                if (!hasInterchange) // no need to continue bubble since there is no interchange of items
+                {
+                    break;
+                }
+            }
+        }
+
+        //Insertion Sorting
+        public static void insertSort(int[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+            {
+                return;
+            }
+            int size = arr.Length;
+            for (int i = 1; i < size; i++)
+            {
+                int temp = arr[i];
+                int j = i - 1;
+
+                for (; j >= 0; j--)
+                {
+                    if (arr[j] > temp) //larger than the waiting item, so move it to the right
+                    {
+                        arr[j + 1] = arr[j];
+                    }
+                    else //Found postion to insert
+                    {
+                        break;
+                    }
+                }
+                arr[j + 1] = temp;  //arr[j] < temp, so insert on j's right
+            }
+        }
+
+        //Selection Sorting
+        public static void selectSort(int[] arr)
+        {
+            if (arr == null || arr.Length == 0)
+            {
+                return;
+            }
+            int size = arr.Length;
+            for (int i = 0; i < size; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < size; j++)
+                {
+                    if (arr[j] < arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                //swap
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+            }
+        }
+
         //Merge Sorting
         public static void mergeSort(int[] arr, int[] temp, int left, int right)
         {
