@@ -168,5 +168,52 @@ namespace DataStructureAndAlgorithms
 
             return i;
         }
+
+        //Counting Sort
+        public static void countingSort(int[] arr, int size)
+        {
+            if (arr == null || size < 1)
+            {
+                return;
+            }
+
+            int max = arr[0];
+            for (int i = 1; i < size; i++)
+            {
+                if (max < arr[i])
+                {
+                    max = arr[i];
+                }
+            }
+            //creating the bucket array
+            int[] c = new int[max + 1];
+            for (int i = 0; i <= max; i++)
+            {
+                c[i] = 0;
+            }
+            //putting items to c
+            for (int i = 0; i < size; i++)
+            {
+                c[arr[i]]++;
+            }
+            //sum up
+            for (int i = 1; i <= max; i++)
+            {
+                c[i] = c[i - 1] + c[i];
+            }
+            //temp array r to store the sorted items
+            int[] r = new int[size];
+            for (int i = size - 1; i >= 0; i--)
+            {
+                int index = c[arr[i]] - 1;
+                r[index] = arr[i];
+                c[arr[i]]--;
+            }
+            //copy to original array
+            for (int i = 0; i < size; i++)
+            {
+                arr[i] = r[i];
+            }
+        }
     }
 }

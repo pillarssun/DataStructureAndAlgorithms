@@ -13,7 +13,9 @@
     - HashSet: no repeatable items
     - Dictionary<K, T>: type-safe
 
-2. Data structures and algorithms (course on: [Geek Time](https://time.geekbang.org/column/article/39972))
+2. C# Delegate and Event
+
+3. Data structures and algorithms (course on: [Geek Time](https://time.geekbang.org/column/article/39972))
 
     1. Introduction, time and space complexity calculation 
     2. Array
@@ -22,12 +24,12 @@
     5. Queue
     6. Recursion 
     7. Sorting (Bubble, Insertion, Selection, Merge, Quick)
+    8. Linear Sort (Bucket, Counting, Radix)
+    9. How to implement a generic and high-efficiency sorting function
 
 ***  
 The following are to learn:
 
-    8. Linear Sort (Bucket, Counting, Radix)
-    9. How to implement a generic and high-efficiency sorting function
     10. Binary Search
     11. Skip List
     12. Hash Table

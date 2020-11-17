@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DataStructureAndAlgorithms;
+using DataStructureAndAlgorithms.DelegateAndEvent;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace MSTestForDAndA
@@ -11,6 +12,33 @@ namespace MSTestForDAndA
     {
         private int[] unSortedArr = { 202, 32, 11, 5, 4222, 88, 9 };
         private int[] sortedArr = { 5, 9, 11, 32, 88, 202, 4222 };
+
+        [TestMethod]
+        public void TestEventUsages()
+        {
+            Stock stock = new Stock("StockCode");
+            stock.Price = 120;
+            stock.PriceChanged += stock_PriceChanged;
+            stock.Price = 150;
+        }
+        static void stock_PriceChanged(object sender, PriceChangedEventArgs e)
+        {
+            if ((e.newPrice - e.lastPrice) / e.lastPrice > 0.1M)
+            {
+                Console.WriteLine("Alert, 10% stock price increase!");
+            }
+        }
+
+        [TestMethod]
+        public void TestDelegateUsages()
+        {
+            PlayerStats[] playerStatsArray = { new PlayerStats("aaa", 5, 1, 1),
+                new PlayerStats("bbb", 2, 2, 2),
+                new PlayerStats("ccc", 3, 3, 8) };
+            DisplayPlayerNames dpn = new DisplayPlayerNames();
+            Assert.AreEqual(dpn.getPlayStatusOfMostKills(playerStatsArray).name, "aaa");
+            Assert.AreEqual(dpn.getPlayStatusOfMostFlagsCaptured(playerStatsArray).name, "ccc");
+        }
 
         [TestMethod]
         public void TestQueueAndStackUsages()
@@ -180,6 +208,15 @@ namespace MSTestForDAndA
         {
             Utils.printIntArray(unSortedArr);
             Sorting.quickSort(unSortedArr, 0, 6);
+            Utils.printIntArray(unSortedArr);
+            CollectionAssert.AreEqual(unSortedArr, sortedArr);
+        }
+
+        [TestMethod]
+        public void TestCountingSort()
+        {
+            Utils.printIntArray(unSortedArr);
+            Sorting.countingSort(unSortedArr, 7);
             Utils.printIntArray(unSortedArr);
             CollectionAssert.AreEqual(unSortedArr, sortedArr);
         }
