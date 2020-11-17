@@ -215,5 +215,87 @@ namespace DataStructureAndAlgorithms
                 arr[i] = r[i];
             }
         }
+
+        //Binary Sort
+        public static int bSearch(int[] arr, int size, int target)
+        {
+            int low = 0;
+            int high = size - 1;
+
+            while (low <= high)
+            {
+                int mid = low + ((high - low) >> 1);
+                //low + high may cause the stack overflow if both of them are large numbers
+                //int mid = (low + high) / 2;
+
+                if (arr[mid] == target)
+                {
+                    return mid;
+                } else if (arr[mid] < target)
+                {
+                    low = mid + 1;
+                } else
+                {
+                    high = mid - 1;
+                }
+            }
+            return -1;
+        }
+
+        public static int bSearchRecursion(int[] arr, int size, int target)
+        {
+            return bSearchRecursionInternal(arr, 0, size - 1, target);
+        }
+        public static int bSearchRecursionInternal(int[] arr, int low, int high, int target)
+        {
+            if (low > high)
+            {
+                return -1;
+            }
+            int mid = low + ((high - low) >> 1);
+            if (arr[mid] == target)
+            {
+                return mid;
+            } else if (arr[mid] < target)
+            {
+                low = mid + 1;
+                return bSearchRecursionInternal(arr, low, high, target);
+            } else
+            {
+                high = mid - 1;
+                return bSearchRecursionInternal(arr, low, high, target);
+            }
+        }
+
+        //To find the first matched item in an array that has repeated items
+        public static int bSearchToLocateFirstMatchValue(int[] arr, int size, int target)
+        {
+            int low = 0;
+            int high = size - 1;
+
+            while (low <= high)
+            {
+                int mid = low + ((high - low) >> 1);
+
+                if (arr[mid] > target)
+                {
+                    high = mid - 1;
+                } else if (arr[mid] < target)
+                {
+                    low = mid + 1;
+                } else
+                {
+                    if (mid == 0 || arr[mid - 1] != target)  // find the very left one
+                    {
+                        return mid;
+                    } else
+                    {
+                        high = mid - 1;
+                    }
+                }
+            }
+            return -1;
+        }
+
     }
 }

@@ -12,6 +12,7 @@ namespace MSTestForDAndA
     {
         private int[] unSortedArr = { 202, 32, 11, 5, 4222, 88, 9 };
         private int[] sortedArr = { 5, 9, 11, 32, 88, 202, 4222 };
+        private int[] sortedArr_withRepeatedItems = { 5, 9, 32, 32, 88, 202, 4222 };
 
         [TestMethod]
         public void TestEventUsages()
@@ -219,6 +220,14 @@ namespace MSTestForDAndA
             Sorting.countingSort(unSortedArr, 7);
             Utils.printIntArray(unSortedArr);
             CollectionAssert.AreEqual(unSortedArr, sortedArr);
+        }
+
+        [TestMethod]
+        public void TestBinarySearch()
+        {
+            Assert.AreEqual(Sorting.bSearch(sortedArr, 7, 88), 4);
+            Assert.AreEqual(Sorting.bSearchRecursion(sortedArr, 7, 88), 4);
+            Assert.AreEqual(Sorting.bSearchToLocateFirstMatchValue(sortedArr_withRepeatedItems, 7, 32), 2);
         }
     }
 }

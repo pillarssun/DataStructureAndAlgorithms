@@ -26,12 +26,12 @@
     7. Sorting (Bubble, Insertion, Selection, Merge, Quick)
     8. Linear Sort (Bucket, Counting, Radix)
     9. How to implement a generic and high-efficiency sorting function
+    10. Binary Search
+    11. Skip List
 
 ***  
 The following are to learn:
 
-    10. Binary Search
-    11. Skip List
     12. Hash Table
     13. Hash Algorithm
     14. Binary Tree
